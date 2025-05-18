@@ -80,7 +80,7 @@ app = FastAPI()
 
 # Definimos nuestra primera "ruta" o "endpoint"
 @app.get("/")
-def raiz():
+async def raiz():
     # Esta función se ejecutará cuando alguien visite la URL raíz
     return {"mensaje": "¡Hola, bienvenido a mi primera API!"}
 ```
@@ -152,7 +152,7 @@ contador_id = 1  # Para asignar IDs únicos a cada tarea
 
 ```python
 @app.post("/tareas/", response_model=Tarea, summary="Crear una nueva tarea")
-def crear_tarea(tarea: Tarea):
+async def crear_tarea(tarea: Tarea):
     """
     Crea una nueva tarea en la lista de tareas.
     
@@ -176,7 +176,7 @@ def crear_tarea(tarea: Tarea):
 
 ```python
 @app.get("/tareas/", response_model=List[Tarea], summary="Obtener todas las tareas")
-def obtener_tareas():
+async def obtener_tareas():
     """
     Devuelve la lista completa de tareas.
     """
@@ -187,7 +187,7 @@ def obtener_tareas():
 
 ```python
 @app.get("/tareas/{tarea_id}", response_model=Tarea, summary="Obtener una tarea por ID")
-def obtener_tarea(tarea_id: int):
+async def obtener_tarea(tarea_id: int):
     """
     Busca y devuelve una tarea específica según su ID.
     
@@ -212,7 +212,7 @@ from fastapi import FastAPI, HTTPException
 
 ```python
 @app.put("/tareas/{tarea_id}", response_model=Tarea, summary="Actualizar una tarea")
-def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
+async def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
     """
     Actualiza una tarea existente.
     
@@ -236,7 +236,7 @@ def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
 
 ```python
 @app.delete("/tareas/{tarea_id}", response_model=Tarea, summary="Eliminar una tarea")
-def eliminar_tarea(tarea_id: int):
+async def eliminar_tarea(tarea_id: int):
     """
     Elimina una tarea existente.
     
@@ -276,12 +276,12 @@ contador_id = 1  # Para asignar IDs únicos a cada tarea
 
 # Ruta raíz
 @app.get("/")
-def raiz():
+async def raiz():
     return {"mensaje": "¡Bienvenido a la API de Tareas!"}
 
 # Crear una tarea
 @app.post("/tareas/", response_model=Tarea, summary="Crear una nueva tarea")
-def crear_tarea(tarea: Tarea):
+async def crear_tarea(tarea: Tarea):
     """
     Crea una nueva tarea en la lista de tareas.
     
@@ -302,7 +302,7 @@ def crear_tarea(tarea: Tarea):
 
 # Obtener todas las tareas
 @app.get("/tareas/", response_model=List[Tarea], summary="Obtener todas las tareas")
-def obtener_tareas():
+async def obtener_tareas():
     """
     Devuelve la lista completa de tareas.
     """
@@ -310,7 +310,7 @@ def obtener_tareas():
 
 # Obtener una tarea específica
 @app.get("/tareas/{tarea_id}", response_model=Tarea, summary="Obtener una tarea por ID")
-def obtener_tarea(tarea_id: int):
+async def obtener_tarea(tarea_id: int):
     """
     Busca y devuelve una tarea específica según su ID.
     
@@ -326,7 +326,7 @@ def obtener_tarea(tarea_id: int):
 
 # Actualizar una tarea
 @app.put("/tareas/{tarea_id}", response_model=Tarea, summary="Actualizar una tarea")
-def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
+async def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
     """
     Actualiza una tarea existente.
     
@@ -347,7 +347,7 @@ def actualizar_tarea(tarea_id: int, tarea_actualizada: Tarea):
 
 # Eliminar una tarea
 @app.delete("/tareas/{tarea_id}", response_model=Tarea, summary="Eliminar una tarea")
-def eliminar_tarea(tarea_id: int):
+async def eliminar_tarea(tarea_id: int):
     """
     Elimina una tarea existente.
     
@@ -443,4 +443,3 @@ async def crear_tarea(tarea: Tarea):
 * **Libera el hilo** mientras espera operaciones de E/S (consultas SQL, peticiones HTTP externas, etc.).
 * Permite **manejar más clientes concurrentes** con los mismos recursos.
 * No cambia la forma de llamar a la función: simplemente precede la definición con `async`.
-
