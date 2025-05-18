@@ -1,4 +1,5 @@
 # FastAPI---Tutorial
+[![Ver video en YouTube](https://img.youtube.com/vi/dAQENEPAqsc/hqdefault.jpg)](https://www.youtube.com/watch?v=dAQENEPAqsc "Haz clic para reproducir")
 # Tutorial Básico de FastAPI 
 ## ¿Qué es una API REST?
 
